@@ -253,6 +253,37 @@
             transform: scale(0.98);
         }
 
+        .audio-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff3e8d, #ff2d69);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(255, 45, 105, 0.5);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0.8;
+        }
+
+        .audio-control:hover {
+            transform: scale(1.1);
+            opacity: 1;
+            box-shadow: 0 7px 20px rgba(255, 45, 105, 0.7);
+        }
+
+        .audio-control.muted {
+            background: linear-gradient(45deg, #666, #444);
+        }
+
     </style>
 </head>
 <body>
@@ -262,6 +293,16 @@
     <canvas id="fireworksCanvas"></canvas>
     <div class="hearts-container" id="heartsContainer"></div>
     
+    <!-- Audio element for background music -->
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="happy_song.mp3" type="audio/mpeg">
+        <source src="Jug Jug Jeeve Shiddat 128 Kbps (mp3cut.net).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Audio control button -->
+    <button class="audio-control" id="audioControl">🔊</button>
+
     <div class="birthday-container">
         <h1 class="birthday-text text-6xl">Happy Birthday, Shalu</h1>
         <p class="romantic-message">Every moment with you is a celebration, but today is especially magical. Here's to another year of love, laughter, and countless beautiful memories together.</p>
@@ -799,8 +840,59 @@
             }, 4000);
         }
 
+        // Audio management
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const audioControl = document.getElementById('audioControl');
+        let isPlaying = false;
+
+        function playBackgroundMusic() {
+            backgroundMusic.play().then(() => {
+                isPlaying = true;
+                audioControl.textContent = '🔊';
+                audioControl.classList.remove('muted');
+            }).catch((error) => {
+                console.log('Autoplay was prevented:', error);
+                isPlaying = false;
+                audioControl.textContent = '🔇';
+                audioControl.classList.add('muted');
+            });
+        }
+
+        function toggleAudio() {
+            if (isPlaying) {
+                backgroundMusic.pause();
+                isPlaying = false;
+                audioControl.textContent = '🔇';
+                audioControl.classList.add('muted');
+            } else {
+                playBackgroundMusic();
+            }
+        }
+
+        // Audio control button event
+        audioControl.addEventListener('click', toggleAudio);
+
+        // Try to play music on any user interaction
+        function enableAudioOnInteraction() {
+            if (!isPlaying) {
+                playBackgroundMusic();
+                // Remove the event listeners after first interaction
+                document.removeEventListener('click', enableAudioOnInteraction);
+                document.removeEventListener('keydown', enableAudioOnInteraction);
+                document.removeEventListener('touchstart', enableAudioOnInteraction);
+            }
+        }
+
+        // Add interaction listeners
+        document.addEventListener('click', enableAudioOnInteraction);
+        document.addEventListener('keydown', enableAudioOnInteraction);
+        document.addEventListener('touchstart', enableAudioOnInteraction);
+
         // Initialize the page
         window.addEventListener('load', () => {
+            // Try to play music immediately (will work if autoplay is allowed)
+            playBackgroundMusic();
+            
             // Start animations
             animateStars();
             animatePetals();
@@ -907,6 +999,11 @@
     });
                 
                 celebrateBtn.addEventListener('click', () => {
+                    // Ensure music is playing
+                    if (!isPlaying) {
+                        playBackgroundMusic();
+                    }
+                    
                     // Add click effect
                     gsap.to(celebrateBtn, {
                         scale: 0.95,
