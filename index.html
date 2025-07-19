@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Heart Fell From the Sky — For Sneha</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="landing-page">
+        <div class="twilight-sky"></div>
+        <div class="heart-container">
+            <div class="falling-heart">
+                <div class="heart"></div>
+                <div class="sparkles"></div>
+            </div>
+        </div>
+        <div class="heart-tree-container">
+            <!-- Replace the tree-leaves div with this new structure -->
+            <div class="heart-tree">
+                <div class="tree-trunk"></div>
+                <div class="tree-leaves"></div>
+                <div class="heart-decorations">
+                    <div class="heart-decoration"></div>
+                    <div class="heart-decoration"></div>
+                    <div class="heart-decoration"></div>
+                    <div class="heart-decoration"></div>
+                    <div class="heart-decoration"></div>
+                </div>
+                <div class="butterflies"></div>
+            </div>
+            <div class="tree-message">
+                <span>✨💗 Click Here to Unlock the Magic 💗✨</span>
+            </div>
+        </div>
+        <audio id="background-music" loop>
+            <source src="assets/background-music.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="journey-container hidden">
+        <!-- Page One: A Story Begins -->
+        <section class="journey-page" id="page-one">
+            <div class="story-container">
+                <h2>A Story Begins...</h2>
+                <div class="fairytale-text">
+                    <p>Once upon a time, a heart fell from the sky...</p>
+                    <p>Not just any heart — it was filled with laughter, light, and love.</p>
+                    <p>That heart was <span class="highlight">Sneha</span>.</p>
+                </div>
+                <div class="sneha-character"></div>
+                <button class="next-button">Continue the Journey</button>
+            </div>
+        </section>
+
+        <!-- Page Two: Memories and Magic -->
+        <section class="journey-page hidden" id="page-two">
+            <div class="memories-container">
+                <h2>Memories and Magic</h2>
+                <div class="crystal-frames-carousel">
+                    <div class="crystal-frame">
+                        <div class="photo" id="photo1"></div>
+                    </div>
+                    <div class="crystal-frame">
+                        <div class="photo" id="photo2"></div>
+                    </div>
+                    <div class="crystal-frame">
+                        <div class="photo" id="photo3"></div>
+                    </div>
+                </div>
+                <div class="memory-text">
+                    <p>From silly laughs to deep talks, every moment with you is a treasure.</p>
+                </div>
+                <button class="next-button">Continue the Journey</button>
+            </div>
+        </section>
+
+        <!-- Page Three: A Gift of Gratitude -->
+        <section class="journey-page hidden" id="page-three">
+            <div class="gift-container">
+                <h2>A Gift of Gratitude</h2>
+                <div class="gift-box">
+                    <div class="gift-lid"></div>
+                    <div class="gift-base"></div>
+                </div>
+                <div class="letter hidden">
+                    <p>You're the kind of friend stories are written about.</p>
+                    <p>The kind who turns the ordinary into magic.</p>
+                    <p>Your kindness lights up the darkest days,</p>
+                    <p>Your laughter is the melody that brightens every moment,</p>
+                    <p>And your friendship is the greatest treasure I've found.</p>
+                </div>
+                <button class="next-button hidden">Continue the Journey</button>
+            </div>
+        </section>
+
+        <!-- Page Four: Make a Wish -->
+        <section class="journey-page hidden" id="page-four">
+            <div class="wish-container">
+                <h2>Make a Wish, Sneha!</h2>
+                <div class="birthday-cake">
+                    <div class="cake-base"></div>
+                    <div class="cake-middle"></div>
+                    <div class="cake-top"></div>
+                    <div class="candles">
+                        <div class="candle"></div>
+                        <div class="candle"></div>
+                        <div class="candle"></div>
+                    </div>
+                </div>
+                <p class="wish-prompt">Blow out the candles and make a wish... 🎂</p>
+                <button class="blow-candles">Blow Candles</button>
+                <div class="birthday-message hidden">
+                    <h1>🎉 Happy Birthday, Sneha! 🎉</h1>
+                    <p>You are loved beyond words.</p>
+                    <p class="signature">— With all my heart,<br>Aman</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
